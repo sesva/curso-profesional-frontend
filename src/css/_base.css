@@ -4,7 +4,7 @@
 }
 
 .b-logo{
-    position: absolute;
+    /* position: absolute; */
 }
 
 .b-main-navigation{
@@ -40,6 +40,21 @@
     background: #174377;
     text-decoration: none;
     color: orange;
+}
+
+.b-logo{
+    float: left;
+    margin: 10px 0 0 0;
+    padding: 5px 0 0 10px;
+    font-size: 26px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border: 2px solid white;
+}
+
+.b-log a{
+    color: white;
 }
 
 
