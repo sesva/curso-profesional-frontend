@@ -32,6 +32,8 @@
                 // Render to DOM
                 renderSignals(components.signalsComponent.originalSignals);
 
+                enableLazyLoadForImages();
+
                 // Active Filter
                 createFilter();
 
@@ -58,6 +60,17 @@
 
             return components.signalsComponent.originalSignals.filter(function(signal){
                 return signal.name.toLowerCase().indexOf(searchTerm) >= 0;
+            });
+        }
+
+        function enableLazyLoadForImages(){
+            $('.lazy').lazy({
+                scrollDirection: 'vertical',
+                effect: 'fadeIn',
+                visibleOnly: true,
+                onError: function(element){
+                    console.log('error loading ' + element.data('src'));
+                }
             });
         }
 

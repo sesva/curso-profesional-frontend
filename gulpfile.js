@@ -4,6 +4,8 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const watch = require('gulp-watch');
 const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 
 // const util = require('util');
 // const util = require('gulp-util');
@@ -12,6 +14,19 @@ gulp.task('sass', () => {
     return gulp.src( './src/scss/main.scss' )
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest( './dist/css'));
+});
+
+const jsDir = './src/js/app/';
+
+gulp.task('minify-js', ()=>{
+    return gulp.src([
+        jsDir + 'navigation.js',
+        jsDir + 'senales.js'
+    ]).pipe(concat('all-scripts.js'))
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(rename('all-scripts.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('watch', ()=>{
